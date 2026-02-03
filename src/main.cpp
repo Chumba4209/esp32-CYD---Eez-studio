@@ -15,11 +15,16 @@
 
 #define TFT_HOR_RES SCREEN_WIDTH
 #define TFT_VER_RES SCREEN_HEIGHT
+// #define TFT_HOR_RES 320
+// #define TFT_VER_RES 240
+
 
 /* LVGL draws into this buffer, 1/10 screen size usually works well. The size is in bytes. */
-#define DRAW_BUF_SIZE (TFT_HOR_RES * TFT_VER_RES / 10 * (LV_COLOR_DEPTH / 8))
+//#define DRAW_BUF_SIZE (TFT_HOR_RES * TFT_VER_RES / 10 * (LV_COLOR_DEPTH / 8))
+//uint32_t draw_buf[DRAW_BUF_SIZE / 4];
+#define DRAW_BUF_SIZE (TFT_HOR_RES * 30) // A buffer for 40 rows
+static uint8_t draw_buf[DRAW_BUF_SIZE];
 
-uint32_t draw_buf[DRAW_BUF_SIZE / 4];
 
 LGFX tft;
 
@@ -92,10 +97,21 @@ void setup()
   lv_log_register_print_cb(my_print);
 #endif
 
-  /* Create a display. */
-  lv_display_t *disp = lv_display_create(TFT_HOR_RES, TFT_VER_RES);
-  lv_display_set_flush_cb(disp, my_disp_flush);
-  lv_display_set_buffers(disp, draw_buf, NULL, sizeof(draw_buf), LV_DISPLAY_RENDER_MODE_PARTIAL);
+ /* Create a display. */
+lv_display_t *disp = lv_display_create(TFT_HOR_RES, TFT_VER_RES);
+lv_display_set_flush_cb(disp, my_disp_flush);
+
+static lv_color_t draw_buf[TFT_HOR_RES * 30];
+
+lv_display_set_buffers(
+    disp,
+    draw_buf,
+    NULL,
+    sizeof(draw_buf),
+    LV_DISPLAY_RENDER_MODE_PARTIAL
+);
+
+
 
   /* Initialize the (dummy) input device driver. */
   lv_indev_t *indev = lv_indev_create();

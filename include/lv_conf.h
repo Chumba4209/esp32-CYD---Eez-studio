@@ -53,7 +53,7 @@
 
 #if LV_USE_STDLIB_MALLOC == LV_STDLIB_BUILTIN
     /*Size of the memory available for `lv_malloc()` in bytes (>= 2kB)*/
-    #define LV_MEM_SIZE (128 * 1024U)          /*[bytes]*/
+    #define LV_MEM_SIZE (56 * 1024U)          /*[bytes]*/
 
     /*Size of the memory expand for `lv_malloc()` in bytes*/
     #define LV_MEM_POOL_EXPAND_SIZE 0
@@ -76,7 +76,7 @@
 
 /*Default Dot Per Inch. Used to initialize default sizes such as widgets sized, style paddings.
  *(Not so important, you can adjust it to modify default sizes and spaces)*/
-#define LV_DPI_DEF 130     /*[px/inch]*/
+#define LV_DPI_DEF 100     /*[px/inch]*/
 
 /*=================
  * OPERATING SYSTEM
@@ -112,7 +112,7 @@
  * and can't be drawn in chunks. */
 
 /*The target buffer size for simple layer chunks.*/
-#define LV_DRAW_LAYER_SIMPLE_BUF_SIZE    (24 * 1024)   /*[bytes]*/
+#define LV_DRAW_LAYER_SIMPLE_BUF_SIZE    (8 * 1024)   /*[bytes]*/
 
 /* The stack size of the drawing thread.
  * NOTE: If FreeType or ThorVG is enabled, it is recommended to set it to 32KB or more.
@@ -131,12 +131,12 @@
 
 	#define LV_DRAW_SW_SUPPORT_RGB565		1
 	#define LV_DRAW_SW_SUPPORT_RGB565A8		1
-	#define LV_DRAW_SW_SUPPORT_RGB888		1
-	#define LV_DRAW_SW_SUPPORT_XRGB8888		1
-	#define LV_DRAW_SW_SUPPORT_ARGB8888		1
-	#define LV_DRAW_SW_SUPPORT_L8			1
-	#define LV_DRAW_SW_SUPPORT_AL88			1
-	#define LV_DRAW_SW_SUPPORT_A8			1
+	#define LV_DRAW_SW_SUPPORT_RGB888		0
+	#define LV_DRAW_SW_SUPPORT_XRGB8888		0
+	#define LV_DRAW_SW_SUPPORT_ARGB8888		0
+	#define LV_DRAW_SW_SUPPORT_L8			0
+	#define LV_DRAW_SW_SUPPORT_AL88			0
+	#define LV_DRAW_SW_SUPPORT_A8			0
 
 	/* Set the number of draw unit.
      * > 1 requires an operating system enabled in `LV_USE_OS`
@@ -444,13 +444,13 @@
 #define LV_FONT_MONTSERRAT_12 0
 #define LV_FONT_MONTSERRAT_14 1
 #define LV_FONT_MONTSERRAT_16 0
-#define LV_FONT_MONTSERRAT_18 0
+#define LV_FONT_MONTSERRAT_18 1
 #define LV_FONT_MONTSERRAT_20 0
 #define LV_FONT_MONTSERRAT_22 0
-#define LV_FONT_MONTSERRAT_24 1
+#define LV_FONT_MONTSERRAT_24 0
 #define LV_FONT_MONTSERRAT_26 0
 #define LV_FONT_MONTSERRAT_28 0
-#define LV_FONT_MONTSERRAT_30 1
+#define LV_FONT_MONTSERRAT_30 0
 #define LV_FONT_MONTSERRAT_32 0
 #define LV_FONT_MONTSERRAT_34 0
 #define LV_FONT_MONTSERRAT_36 0
